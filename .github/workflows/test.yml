@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  APPLITOOLS_BATCH_ID: ${{ github.sha }}
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,16 +18,7 @@ jobs:
 
     - uses: colbyfayock/applitools-eyes-action@main
       with:
-        APPLITOOLS_API_KEY: ${{ env.APPLITOOLS_API_KEY }}
-        APPLITOOLS_BATCH_ID: ${{ env.APPLITOOLS_BATCH_ID }}
+        APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+        APPLITOOLS_BATCH_ID: ${{ github.sha }}
         appName: Demo Eyes Actions Netlify
         baseUrl: ${{ steps.demo.outputs.url }}
-
-  batch-completion-notification:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Update Applitools batch status 
-        uses: wei/curl@v1.1.1
-        with:
-          args: -d "" -X POST https://eyesapi.applitools.com/api/externals/github/servers/github.com/commit/${{ env.APPLITOOLS_BATCH_ID }}/complete?apiKey=${{ env.APPLITOOLS_API_KEY }}
