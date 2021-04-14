@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Waiting for 200 from the Netlify Preview
+      uses: jakepartusch/wait-for-netlify-action@v1.2
+      id: spacejellydev
+      with:
+        site_name: "demo"
+
+    - uses: colbyfayock/applitools-eyes-action@main
+      with:
+        APPLITOOLS_API_KEY: ${{secrets.APPLITOOLS_API_KEY}}
+        appName: Demo Eyes Actions Netlify
+        baseUrl: ${{ steps.demo.outputs.url }}
