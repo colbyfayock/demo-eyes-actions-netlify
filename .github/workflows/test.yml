@@ -12,9 +12,9 @@ jobs:
     steps:
     - name: Waiting for 200 from the Netlify Preview
       uses: jakepartusch/wait-for-netlify-action@v1.2
-      id: spacejellydev
+      id: demo
       with:
-        site_name: "demo"
+        site_name: "demo-eyes-actions-netlify"
 
     - uses: colbyfayock/applitools-eyes-action@main
       with:
