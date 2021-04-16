@@ -1,64 +1,58 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Applitools Eyes GitHub Action & Netlify</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Applitools Eyes GitHub Action & Netlify
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Link href="/applitools">
+            <a className={styles.card}>
+              <h3>Applitools &rarr;</h3>
+              <p>Learn more about Applitools</p>
+            </a>
+          </Link>
+          <Link href="/netlify">
+            <a className={styles.card}>
+              <h3>Netlify &rarr;</h3>
+              <p>Learn more about Netlify</p>
+            </a>
+          </Link>
+          <Link href="/nextjs">
+            <a className={styles.card}>
+              <h3>Next.js &rarr;</h3>
+              <p>Learn more about Next.js</p>
+            </a>
+          </Link>
+          <Link href="/github-actions">
+            <a className={styles.card}>
+              <h3>GitHub Actions &rarr;</h3>
+              <p>Learn more about GitHub Actions</p>
+            </a>
+          </Link>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
+      <footer>
+        <p>
+          <a href="https://github.com/colbyfayock/applitools-eyes-action">
+            Applitools Eyes GitHub Action
+          </a>
+          {` `}|{` `}
+          <a href="https://github.com/colbyfayock/demo-eyes-actions-netlify">
+            Demo Source
+          </a>
+        </p>
       </footer>
     </div>
   )
