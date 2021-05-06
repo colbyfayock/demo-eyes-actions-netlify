@@ -12,7 +12,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Applitools Eyes GitHub Action & Netlify
+          test
         </h1>
 
         <div className={styles.grid}>
