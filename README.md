@@ -1,1 +1,1 @@
-# Applitools
+# Applitools + Netlify
