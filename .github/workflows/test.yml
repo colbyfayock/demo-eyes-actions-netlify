@@ -1,13 +1,9 @@
 name: Test
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [pull_request]
 
 env:
-  DEPLOY_URL: "https://demo-eyes-actions-netlify.netlify.app"
+  DEPLOY_HOST: "demo-eyes-actions-netlify.netlify.app"
 
 jobs:
   test:
@@ -20,17 +16,9 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         checkName: "deploy/netlify"
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
-        
-    - if: ${{ github.event.pull_request }}
-      name: Waiting for 200 from the Netlify Preview
-      uses: jakepartusch/wait-for-netlify-action@v1.2
-      id: demo
-      with:
-        site_name: "demo-eyes-actions-netlify"
     
-    - if: ${{ github.event.pull_request }}
-      name: Storing Preview URL in Environment
-      run: echo "DEPLOY_URL=${{ steps.demo.outputs.url }}" >> $GITHUB_ENV
+    - name: Storing Preview URL in Environment
+      run: echo "DEPLOY_HOST=https://deploy-preview-${{ github.event.pull_request.number }}--${{ env.DEPLOY_HOST }}" >> $GITHUB_ENV
 
     - uses: colbyfayock/applitools-eyes-action@main
       with:
@@ -38,5 +26,5 @@ jobs:
         APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
         APPLITOOLS_BATCH_ID: ${{ github.sha }}
         appName: Demo Eyes Actions Netlify
-        baseUrl: ${{ env.DEPLOY_URL }}
+        baseUrl: "https://${{ env.DEPLOY_HOST }}"
         depth: 2
