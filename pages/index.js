@@ -12,16 +12,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Applitools Eyes GitHub Action & Netlify
-        </h1>
+test        </h1>
 
         <div className={styles.grid}>
-          <Link href="/applitools">
-            <a className={styles.card}>
-              <h3>Applitools &rarr;</h3>
-              <p>Learn more about Applitools</p>
-            </a>
-          </Link>
+
           <Link href="/netlify">
             <a className={styles.card}>
               <h3>Netlify &rarr;</h3>
