@@ -18,7 +18,7 @@ jobs:
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
     
     - name: Storing Preview URL in Environment
-      run: echo "DEPLOY_HOST=https://deploy-preview-${{ github.event.pull_request.number }}--${{ env.DEPLOY_HOST }}" >> $GITHUB_ENV
+      run: echo "DEPLOY_HOST=deploy-preview-${{ github.event.pull_request.number }}--${{ env.DEPLOY_HOST }}" >> $GITHUB_ENV
 
     - uses: colbyfayock/applitools-eyes-action@main
       with:
