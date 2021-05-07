@@ -27,4 +27,4 @@ jobs:
         APPLITOOLS_BATCH_ID: ${{ github.sha }}
         appName: Demo Eyes Actions Netlify
         baseUrl: "https://${{ env.DEPLOY_HOST }}"
-        depth: 2
+        maxDepth: 2
